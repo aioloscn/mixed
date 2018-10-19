@@ -70,7 +70,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JAVA/com.aiolos.design.pattern.creational.simplefactory" pinned="false" current-in-tab="true">
+      <file leaf-file-name="JAVA/com.aiolos.design.pattern.creational.simplefactory" pinned="false" current-in-tab="false">
         <entry file="uml://JAVA/com.aiolos.design.pattern.creational.simplefactory">
           <provider selected="true" editor-type-id="UmlEditorProvider">
             <state>
@@ -132,8 +132,10 @@
                   <point x="0.0" y="26.5" />
                 </edge>
               </edges>
-              <settings layout="Hierarchic Group" zoom="1.0" x="124.5" y="152.5" />
-              <SelectedNodes />
+              <settings layout="Hierarchic Group" zoom="1.0" x="-334.0" y="107.0" />
+              <SelectedNodes>
+                <node>com.aiolos.design.pattern.creational.simplefactory.Test</node>
+              </SelectedNodes>
               <Categories>
                 <Category>Inner Classes</Category>
                 <Category>Methods</Category>
@@ -143,6 +145,16 @@
               </Categories>
               <SCOPE>All</SCOPE>
               <VISIBILITY>private</VISIBILITY>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="10" column="5" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -173,6 +185,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/aiolos/design/pattern/creational/simplefactory/PythonVideo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/aiolos/design/pattern/creational/simplefactory/VideoFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/aiolos/design/pattern/creational/simplefactory/Test.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -387,15 +400,16 @@
       <updated>1538816216750</updated>
       <workItem from="1538816218550" duration="8000" />
       <workItem from="1539930601147" duration="661000" />
-      <workItem from="1539931891432" duration="2845000" />
+      <workItem from="1539931891432" duration="3186000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3514000" />
+    <option name="totallyTimeSpent" value="3855000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1592" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -407,7 +421,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2553305" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -573,8 +587,10 @@
               <point x="0.0" y="26.5" />
             </edge>
           </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="124.5" y="152.5" />
-          <SelectedNodes />
+          <settings layout="Hierarchic Group" zoom="1.0" x="-334.0" y="107.0" />
+          <SelectedNodes>
+            <node>com.aiolos.design.pattern.creational.simplefactory.Test</node>
+          </SelectedNodes>
           <Categories>
             <Category>Inner Classes</Category>
             <Category>Methods</Category>
@@ -584,6 +600,14 @@
           </Categories>
           <SCOPE>All</SCOPE>
           <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="5" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
