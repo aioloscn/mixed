@@ -5,6 +5,8 @@
 
 *.orig
 
+target/
+
 .settings/
 .project
 .classpath
