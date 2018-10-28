@@ -1,11 +1,14 @@
-package com.aiolos.design.pattern.creational.simplefactory;
+package com.aiolos.design.pattern.creational.factorymethod;
 
 /**
  * @author aiolos
  * 2018-10-19
  */
-public class VideoFactory {
-    public Video getVideo(Class clazz) {
+public abstract class VideoFactory {
+
+    public abstract Video getVideo();
+
+    /*public Video getVideo(Class clazz) {
         Video video = null;
         try {
             video = (Video) Class.forName(clazz.getName()).newInstance();
@@ -26,5 +29,5 @@ public class VideoFactory {
             return new PythonVideo();
         }
         return null;
-    }
+    }*/
 }

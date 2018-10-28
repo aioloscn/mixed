@@ -1,4 +1,4 @@
-package com.aiolos.design.pattern.creational.simplefactory;
+package com.aiolos.design.pattern.creational.factorymethod;
 
 /**
  * @author aiolos
