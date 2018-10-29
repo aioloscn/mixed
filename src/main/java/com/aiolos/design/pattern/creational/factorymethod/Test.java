@@ -6,10 +6,8 @@ package com.aiolos.design.pattern.creational.factorymethod;
  */
 public class Test {
     public static void main(String[] args) {
-        VideoFactory vf = new VideoFactory();
-        Video video = vf.getVideo(JavaVideo.class);
-        if (video == null)
-            return;
+        VideoFactory videoFactory = new JavaVideoFactory();
+        Video video = videoFactory.getVideo();
         video.produce();
     }
 }
