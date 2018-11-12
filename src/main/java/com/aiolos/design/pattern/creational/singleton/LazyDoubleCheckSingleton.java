@@ -1,9 +1,11 @@
 package com.aiolos.design.pattern.creational.singleton;
 
+import java.io.Serializable;
+
 /**
  * Created by aiolos on 2018-11-01.
  */
-public class LazyDoubleCheckSingleton {
+public class LazyDoubleCheckSingleton implements Serializable {
     // 禁止重排序
     private volatile static LazyDoubleCheckSingleton lazyDoubleCheckSingleton = null;
 
@@ -22,6 +24,10 @@ public class LazyDoubleCheckSingleton {
                 }
             }
         }
+        return lazyDoubleCheckSingleton;
+    }
+
+    private Object readResolve() {
         return lazyDoubleCheckSingleton;
     }
 }
