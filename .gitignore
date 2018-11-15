@@ -22,3 +22,5 @@ target/
 *.diff
 *.patch
 *.tmp
+
+singleton_file
