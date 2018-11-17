@@ -1,4 +1,6 @@
-package com.aiolos.datastructures;
+package com.aiolos.datastructures.array;
+
+import com.aiolos.datastructures.stack.ArrayStack;
 
 /**
  * @author aiolos

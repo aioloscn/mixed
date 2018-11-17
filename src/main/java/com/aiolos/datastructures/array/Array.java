@@ -1,4 +1,4 @@
-package com.aiolos.datastructures;
+package com.aiolos.datastructures.array;
 
 /**
  * @author aiolos
@@ -75,6 +75,14 @@ public class Array<E> {
         if (index < 0 || index >= size)
             throw new IllegalArgumentException("Get failed. Index is illegal.");
         return data[index];
+    }
+
+    public E getFirst() {
+        return get(0);
+    }
+
+    public E getLast() {
+        return get(size - 1);
     }
 
     /**
