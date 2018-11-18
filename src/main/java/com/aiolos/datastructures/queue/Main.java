@@ -1,5 +1,6 @@
 package com.aiolos.datastructures.queue;
 
+import com.aiolos.datastructures.linkedlist.LinkedList;
 import com.aiolos.datastructures.stack.ArrayStack;
 
 import java.util.Random;
@@ -18,6 +19,10 @@ public class Main {
         LoopQueue loopQueue = new LoopQueue();
         double time2 = testQueue(loopQueue, opCount);
         System.out.println("ArrayQueue, time: " + time2 + "s");
+
+        LinkedListQueue linkedListQueue = new LinkedListQueue();
+        double time3 = testQueue(linkedListQueue, opCount);
+        System.out.println("ArrayQueue, time: " + time3 + "s");
     }
 
     private static double testQueue(Queue<Integer> q, int opCount) {

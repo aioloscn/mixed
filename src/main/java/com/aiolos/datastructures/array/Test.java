@@ -18,5 +18,7 @@ public class Test {
         System.out.println(arr);
         arr.removeAllElement(8);
         System.out.println(arr);
+        arr.removeLast();
+        System.out.println(arr);
     }
 }
