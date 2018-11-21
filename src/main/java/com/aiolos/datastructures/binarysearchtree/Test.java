@@ -16,15 +16,18 @@ public class Test {
 //        bst.inOrder();
 //        bst.inOrderNR();
 
-        bst.postOrder();
-        bst.postOrderNR();
-
-        bst.levelOrder();
-
-        System.out.println(bst.minimum() + "#" + bst.maximum());
-
-        System.out.println(bst.removeMin());
-        System.out.println(bst);
+//        bst.postOrder();
+//        bst.postOrderNR();
+//
+//        bst.levelOrder();
+//
+//        System.out.println(bst.minimum() + "#" + bst.maximum());
+//
+//        System.out.println(bst.removeMin());
 //        System.out.println(bst);
+//        System.out.println(bst);
+
+        bst.remove(3);
+        System.out.println(bst);
     }
 }
