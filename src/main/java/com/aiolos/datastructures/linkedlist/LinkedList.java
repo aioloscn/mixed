@@ -124,6 +124,17 @@ public class LinkedList<E> {
         return remove(size - 1);
     }
 
+    public void removeElements(E e) {
+        dummyHead.next = removeElements(dummyHead.next, e);
+    }
+
+    private Node removeElements(Node node, E e) {
+        if (node == null)
+            return null;
+        node.next = removeElements(node.next, e);
+        return node.e.equals(e) ? node.next : node;
+    }
+
     public String toString() {
         StringBuilder res = new StringBuilder();
         Node cur = dummyHead.next;
