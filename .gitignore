@@ -6,6 +6,7 @@
 *.orig
 
 target/
+out/
 
 .settings/
 .project
