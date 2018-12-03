@@ -18,7 +18,7 @@ public class Trie {
         }
 
         public Node() {
-            this.isWord = false;
+            this(false);
         }
     }
 
@@ -70,6 +70,11 @@ public class Trie {
         return cur.isWord;
     }
 
+    /**
+     * 查询Trie中是否包含指定的前缀
+     * @param prefix
+     * @return
+     */
     public boolean isPrefix(String prefix) {
 
         Node cur = root;
@@ -82,6 +87,11 @@ public class Trie {
         return true;
     }
 
+    /**
+     * 模糊查询, .表示任意字符
+     * @param word
+     * @return
+     */
     public boolean search(String word) {
         return match(root, word, 0);
     }
