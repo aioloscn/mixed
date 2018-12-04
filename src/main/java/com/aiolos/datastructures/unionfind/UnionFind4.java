@@ -1,19 +1,20 @@
 package com.aiolos.datastructures.unionfind;
 
 /**
- * Created by aiolos on 2018-12-03.
+ * @author aiolos
+ * 2018-12-04
  */
-public class UnionFind3 implements UF {
+public class UnionFind4 implements UF {
 
-    private int[] sz; //  sz[i]表示以i为根的集合中元素个数
+    private int[] rank; //  rank[i]表示以i为根的集合所表示的树的层数
     private int[] parent;
 
-    public UnionFind3(int size) {
-        sz = new int[size];
+    public UnionFind4(int size) {
+        rank = new int[size];
         parent = new int[size];
         for (int i = 0; i < size; i ++) {
             parent[i] = i;
-            sz[i] = 1;
+            rank[i] = 1;
         }
     }
 
@@ -59,13 +60,14 @@ public class UnionFind3 implements UF {
         if (pRoot == qRoot)
             return;
 
-        // 元素个数小的集合合并到元素个数大的集合上
-        if (sz[pRoot] < sz[qRoot]) {
+        //  rank低的集合合并到rank高的集合上
+        if (rank[pRoot] < rank[qRoot]) {
             parent[pRoot] = qRoot;
-            sz[qRoot] += sz[pRoot];
+        } else if (rank[pRoot] > rank[qRoot]) {
+            parent[qRoot] = pRoot;
         } else {
             parent[qRoot] = pRoot;
-            sz[pRoot] += sz[qRoot];
+            rank[pRoot] += 1;
         }
     }
 }
