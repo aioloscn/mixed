@@ -121,7 +121,7 @@ public class AVLTree<K extends Comparable<K>, V> {
      * @param y
      * @return
      */
-    private Node leftRatate(Node y) {
+    private Node leftRotate(Node y) {
 
         Node x = y.right;
         Node T2 = x.left;
@@ -174,16 +174,16 @@ public class AVLTree<K extends Comparable<K>, V> {
             return rightRotate(node);
         // RR
         if (balanceFactor < -1 && getBalanceFactor(node.right) <= 0)
-            return leftRatate(node);
+            return leftRotate(node);
         // LR
         if (balanceFactor > 1 && getBalanceFactor(node.left) < 0) {
-            node.left = leftRatate(node.left);
+            node.left = leftRotate(node.left);
             return rightRotate(node);
         }
         // RL
         if (balanceFactor < -1 && getBalanceFactor(node.right) > 0) {
             node.right = rightRotate(node.right);
-            return leftRatate(node);
+            return leftRotate(node);
         }
 
         return node;
