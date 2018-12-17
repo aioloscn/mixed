@@ -50,6 +50,33 @@ public class RBTree<K extends Comparable<K>, V> {
     }
 
     /**
+     * 右旋转
+     * @param node
+     * @return
+     */
+    private Node rightRotate(Node node) {
+
+        Node x = node.left;
+
+        node.left = x.right;
+        x.right = node;
+        x.color = node.color;
+        node.color = RED;
+        return x;
+    }
+
+    /**
+     * 颜色翻转
+     * @param node
+     */
+    private void flipColor(Node node) {
+
+        node.color = RED;
+        node.left.color = BLACK;
+        node.right.color = BLACK;
+    }
+
+    /**
      * 向红黑树中添加新的键值对
      * @param key
      * @param value
