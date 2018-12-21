@@ -16,8 +16,9 @@ public class AlgoFrame extends JFrame {
         this.canvasHeight = canvasHeight;
         AlgoCanvas canvas = new AlgoCanvas();
         setContentPane(canvas);
+
+        setResizable(false);    // 先调用setResizable(false) 强制系统不能resize窗口再pack可解决windows中装饰的边距问题
         pack();
-        setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
