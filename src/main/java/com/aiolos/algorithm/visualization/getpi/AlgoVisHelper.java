@@ -1,4 +1,4 @@
-package com.aiolos.algorithm.visualization.circle;
+package com.aiolos.algorithm.visualization.getpi;
 
 import javax.swing.*;
 import java.awt.*;

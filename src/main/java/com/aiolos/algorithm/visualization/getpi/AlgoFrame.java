@@ -1,8 +1,8 @@
-package com.aiolos.algorithm.visualization.circle;
+package com.aiolos.algorithm.visualization.getpi;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Ellipse2D;
+import java.util.LinkedList;
 
 public class AlgoFrame extends JFrame {
 
@@ -35,10 +35,12 @@ public class AlgoFrame extends JFrame {
         return canvasHeight;
     }
 
-    private Circle[] circles;
+    private Circle circle;
+    private LinkedList<Point> points;
 
-    public void render(Circle[] circles) {
-        this.circles = circles;
+    public void render(Circle circle, LinkedList<Point> points) {
+        this.circle = circle;
+        this.points = points;
         // 将JFrame中的控件重新刷新一遍, 清空AlgoCanvas后重新调用paintCompenent()
         repaint();
     }
@@ -59,13 +61,18 @@ public class AlgoFrame extends JFrame {
             RenderingHints hints = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             g2d.addRenderingHints(hints);
 
-            AlgoVisHelper.setStrokeWidth(g2d, 1);
-            AlgoVisHelper.setColor(g2d, Color.RED);
-            for (Circle circle: circles)
-                if (!circle.isFilled)
-                    AlgoVisHelper.strokeCircle(g2d, circle.x, circle.y, circle.getR());
+            AlgoVisHelper.setStrokeWidth(g2d, 3);
+            AlgoVisHelper.setColor(g2d, Color.BLUE);
+            AlgoVisHelper.strokeCircle(g2d, circle.getX(), circle.getY(), circle.getR());
+
+            for (int i = 0; i < points.size(); i++) {
+                Point p = points.get(i);
+                if (circle.contain(p))
+                    AlgoVisHelper.setColor(g2d, Color.RED);
                 else
-                    AlgoVisHelper.fillCircle(g2d, circle.x, circle.y, circle.getR());
+                    AlgoVisHelper.setColor(g2d, Color.GREEN);
+                AlgoVisHelper.fillCircle(g2d, p.x, p.y, 3);
+            }
         }
 
         // 系统创建AlgoCanvas时自动调用这个方法，来决定画布的大小

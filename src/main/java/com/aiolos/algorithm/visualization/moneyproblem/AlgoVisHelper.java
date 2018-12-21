@@ -1,4 +1,4 @@
-package com.aiolos.algorithm.visualization.circle;
+package com.aiolos.algorithm.visualization.moneyproblem;
 
 import javax.swing.*;
 import java.awt.*;

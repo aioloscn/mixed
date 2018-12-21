@@ -1,8 +1,9 @@
-package com.aiolos.algorithm.visualization.circle;
+package com.aiolos.algorithm.visualization.moneyproblem;
+
+import com.aiolos.algorithm.visualization.circle.Circle;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Ellipse2D;
 
 public class AlgoFrame extends JFrame {
 
@@ -35,10 +36,10 @@ public class AlgoFrame extends JFrame {
         return canvasHeight;
     }
 
-    private Circle[] circles;
+    private int[] money;
 
-    public void render(Circle[] circles) {
-        this.circles = circles;
+    public void render(int[] money) {
+        this.money = money;
         // 将JFrame中的控件重新刷新一遍, 清空AlgoCanvas后重新调用paintCompenent()
         repaint();
     }
@@ -59,13 +60,15 @@ public class AlgoFrame extends JFrame {
             RenderingHints hints = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             g2d.addRenderingHints(hints);
 
-            AlgoVisHelper.setStrokeWidth(g2d, 1);
-            AlgoVisHelper.setColor(g2d, Color.RED);
-            for (Circle circle: circles)
-                if (!circle.isFilled)
-                    AlgoVisHelper.strokeCircle(g2d, circle.x, circle.y, circle.getR());
-                else
-                    AlgoVisHelper.fillCircle(g2d, circle.x, circle.y, circle.getR());
+            int w = canvasWidth / money.length;
+            for (int i = 0; i < money.length; i ++)
+                if (money[i] > 0) {
+                    AlgoVisHelper.setColor(g2d, Color.BLUE);
+                    AlgoVisHelper.fillRectangle(g2d, i * w + 1, canvasHeight / 2 - money[i], w - 1, money[i]);
+                } else if (money[i] < 0) {
+                    AlgoVisHelper.setColor(g2d, Color.RED);
+                    AlgoVisHelper.fillRectangle(g2d, i * w + 1, canvasHeight / 2, w - 1, - money[i]);
+                }
         }
 
         // 系统创建AlgoCanvas时自动调用这个方法，来决定画布的大小
