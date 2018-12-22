@@ -14,6 +14,7 @@ public class AlgoVisualizer {
     private static int DELAY = 10;
 
     private Circle circle;
+    private int insideCircle = 0;
     private LinkedList<Point> points;
     private AlgoFrame frame;
     private int N;
@@ -42,14 +43,25 @@ public class AlgoVisualizer {
 
         for (int i = 0; i < N; i++) {
 
-            frame.render(circle, points);
-            AlgoVisHelper.pause(DELAY);
+            if (i % 10 == 0) {
+                frame.render(circle, points);
+                AlgoVisHelper.pause(DELAY);
+
+                if (points.size() != 0) {
+                    int circleArea = insideCircle;
+                    int squareArea = points.size();
+                    double piEstimation = 4 * (double)insideCircle / squareArea;
+                    System.out.println(piEstimation);
+                }
+            }
 
             int x = (int) (Math.random() * frame.getCanvasWidth());
             int y = (int) (Math.random() * frame.getCanvasHeight());
 
             Point p = new Point(x, y);
             points.add(p);
+            if (circle.contain(p))
+                insideCircle ++;
         }
     }
 
