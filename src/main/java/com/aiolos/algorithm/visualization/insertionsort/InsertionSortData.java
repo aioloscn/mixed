@@ -1,18 +1,38 @@
-package com.aiolos.algorithm.visualization.selectionsort;
+package com.aiolos.algorithm.visualization.insertionsort;
 
-public class SelectionSortData {
+import java.util.Arrays;
+
+public class InsertionSortData {
+
+    public enum Type {
+        Default,
+        NearlyOrdered
+    }
 
     private int[] numbers;
 
     public int orderedIndex = -1;           // [0...orderedIndex) 是有序的
-    public int currentMinIndex = -1;        // 当前找到的最小元素的索引
-    public int currentCompareIndex = -1;    // 当前正在比较的元素的索引
+    public int currentIndex = -1;        // 当前正在处理的元素的索引
 
-    public SelectionSortData(int N, int randomBound) {
+    public InsertionSortData(int N, int randomBound) {
+        this(N, randomBound, Type.Default);
+    }
+
+    public InsertionSortData(int N, int randomBound, Type dataType) {
 
         numbers = new int[N];
         for (int i = 0; i < N; i++)
             numbers[i] = (int)(Math.random() * randomBound) + 1;
+
+        if (dataType == Type.NearlyOrdered) {
+            Arrays.sort(numbers);
+            int swapTime = (int) (0.02 * N);
+            for (int i = 0; i < swapTime; i++) {
+                int a = (int) (Math.random() * N);
+                int b = (int) (Math.random() * N);
+                swap(a, b);
+            }
+        }
     }
 
     public int N() {
