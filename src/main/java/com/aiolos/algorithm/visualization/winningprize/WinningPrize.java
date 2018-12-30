@@ -41,8 +41,8 @@ public class WinningPrize {
 
     public static void main(String[] args) {
 
-        double chance = 0.2;
-        int playTime = 5;
+        double chance = 0.5;
+        int playTime = 2;
         int N = 10000000;
 
         WinningPrize wp = new WinningPrize(chance, playTime, N);
