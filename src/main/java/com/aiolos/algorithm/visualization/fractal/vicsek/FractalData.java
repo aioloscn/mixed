@@ -1,4 +1,4 @@
-package com.aiolos.algorithm.visualization.vicsek.fractal;
+package com.aiolos.algorithm.visualization.fractal.vicsek;
 
 public class FractalData {
 

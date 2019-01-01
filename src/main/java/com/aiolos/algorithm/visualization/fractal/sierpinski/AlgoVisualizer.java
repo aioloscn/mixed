@@ -1,4 +1,4 @@
-package com.aiolos.algorithm.visualization.vicsek.fractal;
+package com.aiolos.algorithm.visualization.fractal.sierpinski;
 
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -19,8 +19,8 @@ public class AlgoVisualizer {
     public AlgoVisualizer(int maxDepth) {
 
         data = new FractalData(maxDepth);
-        int sceneWidth = (int) (Math.pow(3, maxDepth));
-        int sceneHeight = (int) (Math.pow(3, maxDepth));
+        int sceneWidth = (int) (Math.pow(2, maxDepth));
+        int sceneHeight = (int) (Math.pow(2, maxDepth));
 
         EventQueue.invokeLater(() -> {
 
@@ -40,7 +40,7 @@ public class AlgoVisualizer {
 
     private void setData(int depth) {
 
-        if (depth > 0)
+        if (depth >= 0)
             data.depth = depth;
 
         frame.render(data);
@@ -63,7 +63,7 @@ public class AlgoVisualizer {
 
     public static void main(String[] args) {
 
-        int maxDepth = 6;
+        int maxDepth = 9;
         AlgoVisualizer visualizer = new AlgoVisualizer(maxDepth);
     }
 }

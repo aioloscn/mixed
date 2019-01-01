@@ -1,4 +1,4 @@
-package com.aiolos.algorithm.visualization.vicsek.fractal;
+package com.aiolos.algorithm.visualization.fractal.sierpinski;
 
 import javax.swing.*;
 import java.awt.*;
@@ -58,37 +58,38 @@ public class AlgoFrame extends JFrame {
             RenderingHints hints = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             g2d.addRenderingHints(hints);
 
-            drawFractal(g2d, 0, 0, canvasWidth, canvasHeight, 0);
-
+            drawFractal(g2d, 0, canvasHeight, canvasWidth, 0);
         }
 
-        private void drawFractal(Graphics2D g, int x, int y, int w, int h, int depth) {
+        private void drawFractal(Graphics2D g, int Ax, int Ay, int side, int depth) {
+
+            if (side <= 1) {
+                AlgoVisHelper.setColor(g, Color.BLUE);
+                AlgoVisHelper.fillRectangle(g, Ax, Ay, 1, 1);
+                return;
+            }
+
+            int Bx = Ax + side;
+            int By = Ay;
+
+            int h = (int) (Math.sin(60.0 * Math.PI / 180.0) * side);
+            int Cx = Ax + side / 2;
+            int Cy = Ay - h;
 
             if (depth == data.depth) {
                 AlgoVisHelper.setColor(g, Color.BLUE);
-                AlgoVisHelper.fillRectangle(g, x, y, w, h);
+                AlgoVisHelper.fillTriangle(g, Ax, Ay, Bx, By, Cx, Cy);
                 return;
             }
 
-            if (w <= 1 || h <= 1) {
-                AlgoVisHelper.setColor(g, Color.BLUE);
-                AlgoVisHelper.fillRectangle(g, x, y, Math.max(w, 1), Math.max(h, 1));
-                return;
-            }
+            int AB_centerx = (Ax + Bx) / 2;
+            int AB_centery = (Ay + By) / 2;
+            int AC_centerx = (Ax + Cx) / 2;
+            int AC_centery = (Ay + Cy) / 2;
 
-            int w_3 = w / 3;
-            int h_3 = h / 3;
-//            drawFractal(g, x, y, w_3, h_3, depth + 1);
-//            drawFractal(g, x + w_3 * 2, y, w_3, h_3, depth + 1);
-//            drawFractal(g, x + w_3, y + h_3, w_3, h_3, depth + 1);
-//            drawFractal(g, x, y + h_3 * 2, w_3, h_3, depth + 1);
-//            drawFractal(g, x + w_3 * 2, y + h_3 * 2, w_3, h_3, depth + 1);
-
-            drawFractal(g, x + w_3, y, w_3, h_3, depth + 1);
-            drawFractal(g, x, y + h_3, w_3, h_3, depth + 1);
-            drawFractal(g, x + w_3, y + h_3, w_3, h_3, depth + 1);
-            drawFractal(g, x + w_3 * 2, y + h_3, w_3, h_3, depth + 1);
-            drawFractal(g, x + w_3, y + h_3 * 2, w_3, h_3, depth + 1);
+            drawFractal(g, Ax, Ay, side / 2, depth + 1);
+            drawFractal(g, AB_centerx, AB_centery, side / 2, depth + 1);
+            drawFractal(g, AC_centerx, AC_centery, side / 2, depth + 1);
         }
 
         // 系统创建AlgoCanvas时自动调用这个方法，来决定画布的大小
