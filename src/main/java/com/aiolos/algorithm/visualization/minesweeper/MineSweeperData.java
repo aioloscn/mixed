@@ -27,7 +27,8 @@ public class MineSweeperData {
         this.N = N;
         this.M = M;
         mines = new boolean[N][M];
-        mines[0][0] = true;
+
+        generateMines(mineNumber);
     }
 
     public int N() {
@@ -47,5 +48,29 @@ public class MineSweeperData {
         if (!inArea(x, y))
             throw new IllegalArgumentException("Out of index in isMine function");
         return mines[x][y];
+    }
+
+    private void generateMines(int mineNumber) {
+
+        for (int i = 0; i < mineNumber; i++) {
+            int x = i / M;
+            int y = i % M;
+            mines[x][y] = true;
+        }
+
+        for (int i = 0; i < mineNumber; i++) {
+            int x1 = i / M;
+            int y1 = i % M;
+            int x2 = (int) (Math.random() * N);
+            int y2 = (int) (Math.random() * M);
+            swap(x1, y1, x2, y2);
+        }
+    }
+
+    private void swap(int x1, int y1, int x2, int y2) {
+
+        boolean t = mines[x1][y1];
+        mines[x1][y1] = mines[x2][y2];
+        mines[x2][y2] = t;
     }
 }
