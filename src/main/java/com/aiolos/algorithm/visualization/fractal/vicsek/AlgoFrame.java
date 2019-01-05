@@ -58,9 +58,9 @@ public class AlgoFrame extends JFrame {
             RenderingHints hints = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             g2d.addRenderingHints(hints);
 
-//            drawFractal(g2d, 0, 0, canvasWidth, canvasHeight, 0);
+            drawFractal(g2d, 0, 0, canvasWidth, canvasHeight, 0);
 
-            drawFractal2(g2d, 0, 0, canvasWidth, canvasHeight, 0);
+//            drawFractal2(g2d, 0, 0, canvasWidth, canvasHeight, 0);
         }
 
         private void drawFractal(Graphics2D g, int x, int y, int w, int h, int depth) {

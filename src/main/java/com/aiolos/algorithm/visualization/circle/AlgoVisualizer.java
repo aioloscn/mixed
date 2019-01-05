@@ -71,8 +71,8 @@ public class AlgoVisualizer {
         public void mousePressed(MouseEvent event) {
 
             // 点击frame包含了菜单栏的高度而不是panel真实的坐标，需要偏移这么一个高度
-            event.translatePoint(0, frame.getCanvasHeight() - frame.getBounds().height);
-
+            event.translatePoint(-(int)(frame.getBounds().width - frame.getCanvasWidth()) / 2, -(int)(frame.getBounds().height - frame.getCanvasHeight()));
+            System.out.println(event.getPoint());
             for (Circle circle: circles)
                 if (circle.contain(event.getPoint()))
                     circle.isFilled = !circle.isFilled;

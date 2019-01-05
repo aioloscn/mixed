@@ -5,7 +5,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.MouseAdapter;
 
 /**
- * 选择排序O(n*n) 是交换最少的排序
+ * 插入排序，在近乎有序的情况下时间复杂度可以降到O(n)
  * @author aiolos
  * 2018-12-21
  */

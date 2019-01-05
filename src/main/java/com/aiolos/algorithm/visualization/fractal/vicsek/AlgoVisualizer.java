@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 
 /**
- * 选择排序O(n*n) 是交换最少的排序
+ *
  * @author aiolos
  * 2018-12-21
  */

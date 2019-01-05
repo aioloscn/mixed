@@ -45,8 +45,8 @@ public class ShuffleExp {
 
     private void shuffle(int[] arr) {
 
-        for (int i = 0; i < m; i++) {
-            int x = (int) (Math.random() * n);
+        for (int i = n - 1; i >= 0; i--) {
+            int x = (int) (Math.random() * (i + 1));
             swap(arr, i, x);
         }
     }

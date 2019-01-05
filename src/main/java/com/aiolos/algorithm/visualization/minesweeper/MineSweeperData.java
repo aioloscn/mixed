@@ -15,6 +15,9 @@ public class MineSweeperData {
 
     private int N, M;
     private boolean[][] mines;
+    private int[][] numbers;
+    public boolean[][] open;
+    public boolean[][] flags;
 
     public MineSweeperData(int N, int M, int mineNumber) {
 
@@ -27,6 +30,9 @@ public class MineSweeperData {
         this.N = N;
         this.M = M;
         mines = new boolean[N][M];
+        open = new boolean[N][M];
+        flags = new boolean[N][M];
+        numbers = new int[N][M];
 
         generateMines(mineNumber);
     }
@@ -50,6 +56,13 @@ public class MineSweeperData {
         return mines[x][y];
     }
 
+    public int getNumber(int x, int y) {
+
+        if (!inArea(x, y))
+            throw new IllegalArgumentException("Out of index in getNumber function");
+        return numbers[x][y];
+    }
+
     private void generateMines(int mineNumber) {
 
         for (int i = 0; i < mineNumber; i++) {
@@ -58,11 +71,12 @@ public class MineSweeperData {
             mines[x][y] = true;
         }
 
-        for (int i = 0; i < mineNumber; i++) {
+        for (int i = N * M - 1; i >= 0; i--) {
             int x1 = i / M;
             int y1 = i % M;
-            int x2 = (int) (Math.random() * N);
-            int y2 = (int) (Math.random() * M);
+            int rand = (int) (Math.random() * (i + 1));
+            int x2 = rand / M;
+            int y2 = rand % M;
             swap(x1, y1, x2, y2);
         }
     }
@@ -72,5 +86,40 @@ public class MineSweeperData {
         boolean t = mines[x1][y1];
         mines[x1][y1] = mines[x2][y2];
         mines[x2][y2] = t;
+    }
+
+    private void calculateNumbers() {
+
+        for (int i = 0; i < N; i++)
+            for (int j = 0; j < M; j++) {
+
+                if (mines[i][j]) {
+                    numbers[i][j] = -1;
+                    continue;
+                }
+
+                numbers[i][j] = 0;
+                for (int ii = i - 1; ii <= i + 1; ii++)
+                    for (int jj = j - 1; jj <= j + 1; jj++) {
+                        if (inArea(ii, jj) && mines[ii][jj])
+                            numbers[i][j] ++;
+                    }
+            }
+    }
+
+    public void open(int x, int y) {
+
+        if (!inArea(x, y))
+            throw new IllegalArgumentException("Out of index in open function");
+
+        open[x][y] = true;
+        // 边界
+        if (numbers[x][y] > 0)
+            return;
+
+        for (int i = x - 1; x <= x + 1; i++)
+            for (int j = y - 1; j <= j + 1; j++)
+                if (inArea(i, j) && !open[i][j] && !mines[i][j])
+                    open(i, j);
     }
 }

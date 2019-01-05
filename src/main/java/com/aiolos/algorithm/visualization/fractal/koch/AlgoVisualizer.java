@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * 选择排序O(n*n) 是交换最少的排序
@@ -20,7 +22,7 @@ public class AlgoVisualizer {
 
         data = new FractalData(maxDepth);
         int sceneWidth = side;
-        int sceneHeight = side / 3;
+        int sceneHeight = (int) (Math.ceil(Math.sqrt(Math.pow((double)side, 2.0) - Math.pow((double)side / 2, 2.0)) + (double)side / 3));
 
         EventQueue.invokeLater(() -> {
 
@@ -28,7 +30,7 @@ public class AlgoVisualizer {
             frame.addKeyListener(new AlgoKeyListener());
             new Thread(() -> {
                 run();
-            }).start();;
+            }).start();
         });
     }
 
@@ -61,10 +63,34 @@ public class AlgoVisualizer {
 
     private class AlgoMouseListener extends MouseAdapter {}
 
+    private class TimerTaskTest extends TimerTask {
+
+        @Override
+        public void run() {
+            for (int i = 0; i < 10; i++) {
+                setData(i);
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    System.out.println("Error in sleeping.");
+                }
+                if (i == 9)
+                    i = 0;
+            }
+        }
+    }
+
+    private void executeTimerTask() {
+        Timer timer = new Timer();
+        timer.schedule(new TimerTaskTest(), 500);
+    }
+
     public static void main(String[] args) {
 
-        int maxDepth = 6;
-        int side = 900;
+        int maxDepth = 0;
+        int side = 600;
         AlgoVisualizer visualizer = new AlgoVisualizer(maxDepth, side);
+
+        visualizer.executeTimerTask();
     }
 }
