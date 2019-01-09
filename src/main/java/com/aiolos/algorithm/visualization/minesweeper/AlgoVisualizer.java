@@ -51,8 +51,10 @@ public class AlgoVisualizer {
                 } else {
                     data.open(x, y);
                 }
-            } else
-                data.flags[x][y] = !data.flags[x][y];
+            } else {
+                if (data.inArea(x, y))
+                    data.flags[x][y] = !data.flags[x][y];
+            }
         }
 
         frame.render(data);

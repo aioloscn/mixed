@@ -35,6 +35,7 @@ public class MineSweeperData {
         numbers = new int[N][M];
 
         generateMines(mineNumber);
+        calculateNumbers();
     }
 
     public int N() {
@@ -112,14 +113,17 @@ public class MineSweeperData {
         if (!inArea(x, y))
             throw new IllegalArgumentException("Out of index in open function");
 
+        if(isMine(x, y))
+            throw new IllegalArgumentException("Cannot open an mine block in open function.");
+
         open[x][y] = true;
         // 边界
-        if (numbers[x][y] > 0)
-            return;
-
-        for (int i = x - 1; x <= x + 1; i++)
-            for (int j = y - 1; j <= j + 1; j++)
-                if (inArea(i, j) && !open[i][j] && !mines[i][j])
-                    open(i, j);
+        if (getNumber(x, y) == 0) {
+            for (int i = x - 1; i <= x + 1; i++)
+                for (int j = y - 1; j <= y + 1; j++)
+                    if (inArea(i, j) && !open[i][j] && !mines[i][j]) {
+                        open(i, j);
+                    }
+        }
     }
 }
