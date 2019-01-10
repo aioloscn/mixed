@@ -99,20 +99,22 @@ public class AlgoVisualizer {
      */
     private void queueGo() {
 
-        LinkedList<Position> queue = new LinkedList<>();
+        RandomQueue<Position> queue = new RandomQueue<>();
         Position first = new Position(data.getEntranceX(), data.getEntranceY() + 1);
-        queue.addLast(first);
+        queue.add(first);
         data.visited[first.getX()][first.getY()] = true;
+        data.openMist(first.getX(), first.getY());
 
         while (queue.size() != 0) {
-            Position curPos = queue.pop();
+            Position curPos = queue.remove();
 
             for (int i = 0; i < 4; i++) {
                 int newX = curPos.getX() + d[i][0] * 2;
                 int newY = curPos.getY() + d[i][1] * 2;
                 if (data.inArea(newX, newY) && !data.visited[newX][newY]) {
-                    queue.addLast(new Position(newX, newY));
+                    queue.add(new Position(newX, newY));
                     data.visited[newX][newY] = true;
+                    data.openMist(newX, newY);
                     setData(curPos.getX() + d[i][0], curPos.getY() + d[i][1]);
                 }
             }
