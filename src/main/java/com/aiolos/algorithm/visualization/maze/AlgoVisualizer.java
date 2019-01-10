@@ -31,7 +31,6 @@ public class AlgoVisualizer {
         EventQueue.invokeLater(() -> {
 
             frame = new AlgoFrame("Maze Solver Visualization", sceneWidth, sceneHeight);
-            frame.addMouseListener(new AlgoMouseListener());
             new Thread(() -> {
                 run();
             }).start();;

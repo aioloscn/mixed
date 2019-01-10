@@ -1,6 +1,6 @@
 package com.aiolos.algorithm.visualization.maze.generation;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * @author aiolos
@@ -8,14 +8,17 @@ import java.util.ArrayList;
  */
 public class RandomQueue<E> {
 
-    private ArrayList<E> queue;
+    private LinkedList<E> queue;
 
     public RandomQueue() {
-        queue = new ArrayList<>();
+        queue = new LinkedList<>();
     }
 
     public void add(E e) {
-        queue.add(e);
+        if (Math.random() < 0.5)
+            queue.addFirst(e);
+        else
+            queue.addLast(e);
     }
 
     public E remove() {
@@ -23,11 +26,10 @@ public class RandomQueue<E> {
         if (queue.size() == 0)
             throw new IllegalArgumentException("There's no element to remove in Random Queue");
 
-        int randIndex = (int) (Math.random() * queue.size());
-        E randElement = queue.get(randIndex);
-        queue.set(randIndex, queue.get(queue.size() - 1));
-        queue.remove(queue.size() - 1);
-        return randElement;
+        if (Math.random() < 0.5)
+            return queue.removeFirst();
+        else
+            return queue.removeLast();
     }
 
     public int size() {
