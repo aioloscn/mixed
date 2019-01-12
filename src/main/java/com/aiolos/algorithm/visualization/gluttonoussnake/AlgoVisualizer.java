@@ -33,8 +33,7 @@ public class AlgoVisualizer {
 
     private void run() {
 
-//        setData();
-//        go();
+        go();
     }
 
     private void go() {
