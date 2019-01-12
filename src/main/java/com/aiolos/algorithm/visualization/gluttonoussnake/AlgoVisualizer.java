@@ -33,6 +33,8 @@ public class AlgoVisualizer {
 
     private void run() {
 
+        setData();
+        data.generateFood();
         go();
     }
 

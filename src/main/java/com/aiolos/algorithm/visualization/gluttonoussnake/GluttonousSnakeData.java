@@ -50,6 +50,18 @@ public class GluttonousSnakeData {
         queue.addFirst(new int[]{newX, newY});
     }
 
+    public void generateFood() {
+
+        while (true) {
+            int x = (int) (Math.random() * N);
+            int y = (int) (Math.random() * M);
+            if (!queue.contains(new int[]{x, y})) {
+                scene[x][y] = FOOD;
+                break;
+            }
+        }
+    }
+
     public int N() {
         return N;
     }
