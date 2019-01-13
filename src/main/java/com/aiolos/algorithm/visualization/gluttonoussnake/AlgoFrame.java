@@ -69,12 +69,15 @@ public class AlgoFrame extends JFrame {
 
                     if (data.scene[i][j] == GluttonousSnakeData.WALL)
                         AlgoVisHelper.setColor(g2d, AlgoVisHelper.Black);
+
                     if (data.scene[i][j] == GluttonousSnakeData.ROAD)
                         AlgoVisHelper.setColor(g2d, AlgoVisHelper.White);
-                    if (data.scene[i][j] == GluttonousSnakeData.BODY)
-                        AlgoVisHelper.setColor(g2d, AlgoVisHelper.Blue);
-                    if (data.scene[i][j] == GluttonousSnakeData.FOOD)
-                        AlgoVisHelper.setColor(g2d, AlgoVisHelper.DeepOrange);
+
+                    if (data.isBody[i][j])
+                        AlgoVisHelper.setColor(g2d, data.color[i][j]);
+
+                    if (data.inFoodArea(i, j))
+                        AlgoVisHelper.setColor(g2d, AlgoVisHelper.Red);
 
                     AlgoVisHelper.fillRectangle(g2d, j * w, i * h, w, h);
                 }
