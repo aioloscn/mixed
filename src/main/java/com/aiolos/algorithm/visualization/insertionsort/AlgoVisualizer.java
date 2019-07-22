@@ -11,7 +11,7 @@ import java.awt.event.MouseAdapter;
  */
 public class AlgoVisualizer {
 
-    private static int DELAY = 5;
+    private static int DELAY = 100;
     private InsertionSortData data;
     private AlgoFrame frame;
 
