@@ -9,13 +9,14 @@ import java.util.Scanner;
  * @author Aiolos
  * @date 2019-07-23 22:42
  */
-public class AdjSet {
+// 暂时只支持无向无权图
+public class Graph {
 
     private int V;
     private int E;
     private TreeSet<Integer>[] adj;
 
-    public AdjSet(String filename) {
+    public Graph(String filename) {
 
         File file = new File("g.txt");
 
@@ -101,7 +102,7 @@ public class AdjSet {
 
     public static void main(String[] args) {
 
-        AdjSet adjSet = new AdjSet("g.txt");
-        System.out.println(adjSet);
+        Graph graph = new Graph("g.txt");
+        System.out.println(graph);
     }
 }
