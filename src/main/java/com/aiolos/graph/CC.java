@@ -8,30 +8,37 @@ package com.aiolos.graph;
 public class CC {
 
     private Graph G;
-    private boolean[] visited;
-    private int cccount;
+    private int[] visited;
+    private int cccount = 0;
 
     public CC(Graph G) {
 
         this.G = G;
-        this.visited = new boolean[G.V()];
+        this.visited = new int[G.V()];
+
+        for (int i = 0; i < visited.length; i ++)
+            visited[i] = -1;
+
         for (int v = 0; v < G.V(); v ++) {
-            if (!visited[v]) {
-                dfs(v);
-                cccount ++;
+            if (visited[v] == -1) {
+                dfs(v, cccount ++);
             }
         }
     }
 
-    private void dfs(int v) {
+    private void dfs(int v, int ccid) {
 
-        visited[v] = true;
+        visited[v] = ccid;
         for (int w : G.adj(v))
-            if (!visited[w])
-                dfs(w);
+            if (visited[w] == -1)
+                dfs(w, ccid);
     }
 
     private int count() {
+
+        for (int e : visited)
+            System.out.print(e + " ");
+        System.out.println();
         return cccount;
     }
 
