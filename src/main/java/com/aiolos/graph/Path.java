@@ -43,19 +43,17 @@ public class Path {
 
     /**
      * 源到目标节点是否连接
-     * @param t target
      * @return
      */
-    public boolean isConnectedTo(int t) {
+    public boolean isConnected() {
 
-        G.validateVertex(t);
         return pre[t] != -1;
     }
 
     public Iterable<Integer> path() {
 
         ArrayList<Integer> res = new ArrayList<>();
-        if (!isConnectedTo(t))
+        if (!isConnected())
             return res;
 
         int cur = t;
