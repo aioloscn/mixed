@@ -18,7 +18,7 @@ public class Graph {
 
     public Graph(String filename) {
 
-        File file = new File("g.txt");
+        File file = new File(filename);
 
         try (Scanner scanner = new Scanner(file)) {
 

@@ -35,10 +35,10 @@ public class CycleDetection {
 
         visited[v] = true;
         for (int w : G.adj(v))
-            if (!visited[w])
+            if (!visited[w]) {
                 if (dfs(w, v))
                     return true;
-            else if (w != parent)
+            } else if (w != parent)
                 return true;
         return false;
     }
@@ -49,7 +49,7 @@ public class CycleDetection {
 
     public static void main(String[] args) {
 
-        Graph g = new Graph("g.txt");
+        Graph g = new Graph("tree.txt");
         CycleDetection cycleDetection = new CycleDetection(g);
         System.out.println(cycleDetection.hasCycle());
     }

@@ -61,10 +61,10 @@ public class CC {
 
     public static void main(String[] args) {
 
-        Graph g = new Graph("g.txt");
+        Graph g = new Graph("tree.txt");
         CC cc = new CC(g);
         System.out.println(cc.count());
-        System.out.println(cc.isConnected(0, 5));
+        System.out.println(cc.isConnected(0, 4));
 
         ArrayList<Integer>[] comp = cc.component();
         for (int ccid = 0; ccid < comp.length; ccid ++) {
