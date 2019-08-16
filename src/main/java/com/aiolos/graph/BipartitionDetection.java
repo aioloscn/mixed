@@ -1,5 +1,7 @@
 package com.aiolos.graph;
 
+import java.util.ArrayList;
+
 /**
  * @author Aiolos
  * @date 2019-08-16 11:08
@@ -9,7 +11,7 @@ public class BipartitionDetection {
     private Graph G;
     private boolean[] visited;
     private int[] colors;
-    private boolean isBipartite;
+    private boolean isBipartite = true;
 
     public BipartitionDetection(Graph G) {
 
@@ -51,8 +53,33 @@ public class BipartitionDetection {
         return isBipartite;
     }
 
+    public ArrayList<Integer>[] bipartitionGraph() {
+
+        ArrayList<Integer>[] res = new ArrayList[2];
+        res[0] = new ArrayList<>();
+        res[1] = new ArrayList<>();
+        for (int v = 0; v < colors.length; v ++) {
+            if (colors[v] == 0)
+                res[0].add(v);
+            else
+                res[1].add(v);
+        }
+        return res;
+    }
+
     public static void main(String[] args) {
 
+        Graph g = new Graph("g.txt");
+        BipartitionDetection bipartitionDetection = new BipartitionDetection(g);
+        System.out.println(bipartitionDetection.isBipartite());
 
+        ArrayList<Integer>[] res = bipartitionDetection.bipartitionGraph();
+        for (int i = 0; i < res.length; i ++) {
+            System.out.print(i + " : ");
+            for (int v = 0; v < res[i].size(); v ++) {
+                System.out.print(res[i].get(v) + " ");
+            }
+            System.out.println();
+        }
     }
 }

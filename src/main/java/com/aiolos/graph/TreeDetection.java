@@ -31,6 +31,9 @@ public class TreeDetection {
 
     private boolean dfs(int v, int parent, int ccid) {
 
+        if (ccid > 0)
+            return false;
+
         visited[v] = ccid;
         for (int w : G.adj(v)) {
             if (visited[w] == -1) {
