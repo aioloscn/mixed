@@ -1,6 +1,7 @@
 package com.aiolos.threadcoreknowledge.createthreads;
 
 /**
+ * 同时用两种方法启动线程
  * @author Aiolos
  * @date 2019-08-27 19:31
  */

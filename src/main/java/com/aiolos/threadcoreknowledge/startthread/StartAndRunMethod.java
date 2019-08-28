@@ -13,12 +13,8 @@ public class StartAndRunMethod {
 
     public static void main(String[] args) {
 
-        Runnable runnable = () -> {
-            System.out.println(Thread.currentThread().getName());
-        };
+        Runnable runnable = () -> System.out.println(Thread.currentThread().getName());
         runnable.run();
         new Thread(runnable).start();
-        Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[]{0, 1});
     }
 }
