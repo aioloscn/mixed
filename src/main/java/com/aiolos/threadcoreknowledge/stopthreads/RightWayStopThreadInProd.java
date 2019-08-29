@@ -1,7 +1,7 @@
 package com.aiolos.threadcoreknowledge.stopthreads;
 
 /**
- * 最佳实践：catch到InterruptedException之后优先选择：在方法签名中抛出异常，那么在run()中语法就会强制try/catch
+ * 最佳实践1：catch到InterruptedException之后优先选择：在方法签名中抛出异常，那么在run()中语法就会强制try/catch
  * @author Aiolos
  * @date 2019-08-28 23:46
  */

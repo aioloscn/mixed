@@ -14,6 +14,7 @@ public class StartAndRunMethod {
     public static void main(String[] args) {
 
         Runnable runnable = () -> System.out.println(Thread.currentThread().getName());
+        // run方法是主线程调用一个普通方法
         runnable.run();
         new Thread(runnable).start();
     }

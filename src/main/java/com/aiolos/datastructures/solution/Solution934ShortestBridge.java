@@ -1,10 +1,7 @@
 package com.aiolos.datastructures.solution;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * @author Aiolos
@@ -24,46 +21,38 @@ public class Solution934ShortestBridge {
         this.C = A[0].length;
         this.visited = new boolean[R * C];
         int res = Integer.MAX_VALUE;
-        HashSet<HashSet<Integer>> arr = new HashSet<>();
+        ArrayList<ArrayList<Integer>> arr = new ArrayList<>();
 
         for (int v = 0; v < R * C; v ++) {
             if (!visited[v] && A[v / C][v % C] == 1) {
-                HashSet<Integer> set = new HashSet<>();
+                ArrayList<Integer> set = new ArrayList<>();
                 dfs(v, set);
                 arr.add(set);
             }
         }
 
-        visited = new boolean[R * C];
+        for (int v : arr.get(0)) {
 
-        for (HashSet<Integer> set : arr) {
+            int result = 0;
+            HashMap<Integer, Integer> vst = new HashMap<>();
+            Queue<Integer> queue = new LinkedList<>();
+            vst.put(v, 0);
+            queue.add(v);
 
-                for (int v : set) {
+            inner : {
+                while (!queue.isEmpty()) {
 
-                    if (visited[v]) continue;
-                    int result = 0;
-                    HashMap<Integer, Integer> vst = new HashMap<>();
-                    Queue<Integer> queue = new LinkedList<>();
-                    vst.put(v, 0);
-                    queue.add(v);
+                    int w = queue.remove();
+                    for (int d = 0; d < 4; d ++) {
 
-                inner : {
-                    while (!queue.isEmpty()) {
-
-                        int w = queue.remove();
-                        boolean flag = false;
-                        for (int d = 0; d < 4; d ++) {
-
-                            int nextx = w / C + dirs[d][0];
-                            int nexty = w % C + dirs[d][1];
-                            if (nextx >= 0 && nextx < R && nexty >= 0 && nexty < C && !vst.containsKey(nextx * C + nexty) && A[nextx][nexty] == 0) {
-                                queue.add(nextx * C + nexty);
-                                vst.put(nextx * C + nexty, vst.get(w) + 1);
-                            } else if (nextx >= 0 && nextx < R && nexty >= 0 && nexty < C && !set.contains(nextx * C + nexty) && A[nextx][nexty] == 1) {
-                                res = Math.min(res, vst.get(w));
-                                visited[nextx * C + nexty] = true;
-                                break inner;
-                            }
+                        int nextx = w / C + dirs[d][0];
+                        int nexty = w % C + dirs[d][1];
+                        if (nextx >= 0 && nextx < R && nexty >= 0 && nexty < C && !vst.containsKey(nextx * C + nexty) && A[nextx][nexty] == 0) {
+                            queue.add(nextx * C + nexty);
+                            vst.put(nextx * C + nexty, vst.get(w) + 1);
+                        } else if (nextx >= 0 && nextx < R && nexty >= 0 && nexty < C && arr.get(1).contains(nextx * C + nexty) && A[nextx][nexty] == 1) {
+                            res = Math.min(res, vst.get(w));
+                            break inner;
                         }
                     }
                 }
@@ -73,7 +62,7 @@ public class Solution934ShortestBridge {
         return res;
     }
 
-    private void dfs(int v, HashSet<Integer> set) {
+    private void dfs(int v, ArrayList<Integer> set) {
 
         visited[v] = true;
         set.add(v);
