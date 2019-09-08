@@ -1,4 +1,4 @@
-package com.aiolos.jmm;
+package com.aiolos.threadcoreknowledge.jmm;
 
 /**
  * 演示可见性问题
@@ -7,11 +7,13 @@ package com.aiolos.jmm;
  */
 public class FieldVisibility {
 
-    volatile int a = 1;
+    int a = 1;
+    // happens-before原则 只需要给b加volatile，b之前的所有操作都可见，所有b = a = 3，a一定=3
     volatile int b = 2;
 
     private void change() {
         a = 3;
+        // b此时充当了触发器的作用，一定能看到它写入之前的所有操作
         b = a;
     }
 
