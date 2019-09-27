@@ -14,15 +14,15 @@ public class NoVolatile2 implements Runnable {
 
     public static void main(String[] args) throws InterruptedException {
 
-        Runnable r = new UseVolatile();
+        Runnable r = new NoVolatile2();
         Thread thread1 = new Thread(r);
         Thread thread2 = new Thread(r);
         thread1.start();
         thread2.start();
         thread1.join();
         thread2.join();
-        System.out.println(((UseVolatile) r).done);
-        System.out.println(((UseVolatile) r).realA);
+        System.out.println(((NoVolatile2) r).done);
+        System.out.println(((NoVolatile2) r).realA);
     }
 
     @Override
