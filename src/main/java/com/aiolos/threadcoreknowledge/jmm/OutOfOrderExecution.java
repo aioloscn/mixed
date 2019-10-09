@@ -52,7 +52,7 @@ public class OutOfOrderExecution {
             thread2.join();
             String result = "第" + i + "次（" + x + ", " + y + "）";
             System.out.println(result);
-            if (x == 0 && y == 0)
+            if ((x == 0 && y == 0) || (x == 1 && y == 1))
                 break;
         }
     }
