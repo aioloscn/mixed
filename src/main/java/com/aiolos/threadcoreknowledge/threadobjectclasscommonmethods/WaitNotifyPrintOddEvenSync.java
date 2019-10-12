@@ -15,6 +15,11 @@ public class WaitNotifyPrintOddEvenSync {
     public static void main(String[] args) {
 
         new Thread(new TurningRunner(), "偶数").start();
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         new Thread(new TurningRunner(), "奇数").start();
     }
 
