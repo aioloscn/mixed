@@ -76,6 +76,11 @@ class EventStorage {
         storage.add(new Date());
         System.out.println("仓库里有了" + storage.size() + "个产品");
         notify();
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public synchronized void take() {
@@ -90,5 +95,10 @@ class EventStorage {
         }
         System.out.println("拿到了" + storage.poll() + "，现在仓库还剩下" + storage.size());
         notify();
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
