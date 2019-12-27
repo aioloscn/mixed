@@ -164,16 +164,26 @@ public class RBTree<K extends Comparable<K>, V> {
                 size --;
                 return leftNode;
             }
+            //       5                  5
+            //    3    9             3     9
+            //       7   11             7     11
+            //     6                  6
+            //                          6.5
             // 待删除的节点左右子树都不为空
             // 找到比待删除节点大的最小节点，即待删除节点右子树的最小节点
             // 用这个节点顶替待删除节点的位置
-            Node successor = minimum(node.right);   // 找到node右子树的最小节点
+            Node successor = minimum(node.right);   // 找到node右子树的最小节点6
             // 如果successor有右子树，已经在removeMin()中赋值给之前successor的位置，也就是node.left
             // 然后将待删除的右子树赋值给successor的右子树，从而用successor替代待删除节点
-            successor.right = removeMin(node.right);
+            successor.right = removeMin(node.right); // 6->9
+            // 3<-6
             successor.left = node.left; // 将待删除节点的左子树赋值给successor的左子树，successor完全取代了待删除节点
             node.left = node.right = null;  // 删除节点
             return successor;   // successor没有父亲节点，返回给上一层关联
+            //      6                  6
+            //   3    9             3     9
+            //      7   11             7     11
+            //                       6.5
         }
     }
 
@@ -186,6 +196,8 @@ public class RBTree<K extends Comparable<K>, V> {
 
     /**
      * 删除掉以node为根的二分搜索树中的最小节点
+     * 若果有右节点，这个节点的右节点变成了这个节点的父节点的左节点
+     * 如果没有右节点，返回null给这个节点的父节点的左节点，等于删除了这个节点
      * 返回删除节点后新的二分搜索树的根
      * @param node
      * @return
