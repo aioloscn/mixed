@@ -32,7 +32,7 @@ public class PrintOddEvenSync {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (count <= 100) {
+                while (count < 100) {
                     synchronized (lock) {
                         if ((count & 1) == 1) {
                             System.out.println(Thread.currentThread().getName() + ":" + count++);

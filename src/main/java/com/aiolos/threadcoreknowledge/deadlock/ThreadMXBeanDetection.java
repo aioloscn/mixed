@@ -5,6 +5,7 @@ import java.lang.management.ThreadInfo;
 import java.lang.management.ThreadMXBean;
 
 /**
+ * ThreadMxBean接口的实例是一个MXBean，MXBean是符合JMX规范的Bean，也就是Java Management Extensions
  * @author Aiolos
  * @date 2019-10-10 12:40
  */
@@ -20,8 +21,8 @@ public class ThreadMXBeanDetection implements Runnable {
         ThreadMXBeanDetection r2 = new ThreadMXBeanDetection();
         r1.flag = 1;
         r2.flag = 0;
-        Thread t1 = new Thread(r1);
-        Thread t2 = new Thread(r2);
+        Thread t1 = new Thread(r1, "thread1");
+        Thread t2 = new Thread(r2, "thread2");
         t1.start();
         t2.start();
         Thread.sleep(1000);
@@ -33,7 +34,7 @@ public class ThreadMXBeanDetection implements Runnable {
 
             for (int i = 0; i < deadlockThreads.length; i++) {
                 ThreadInfo threadInfo = threadMXBean.getThreadInfo(deadlockThreads[i]);
-                System.out.println(threadInfo.getThreadName());
+                System.out.println(threadInfo.getThreadName() + "发生死锁");
             }
         }
     }
