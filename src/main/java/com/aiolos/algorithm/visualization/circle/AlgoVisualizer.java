@@ -49,9 +49,11 @@ public class AlgoVisualizer {
             AlgoVisHelper.pause(20);
 
             // 数据更新
-            if (isAnimated)
-                for (Circle circle: circles)
+            if (isAnimated) {
+                for (Circle circle : circles) {
                     circle.move(0, 0, frame.getCanvasWidth(), frame.getCanvasHeight());
+                }
+            }
         }
     }
 
@@ -60,8 +62,9 @@ public class AlgoVisualizer {
         @Override
         public void keyReleased(KeyEvent event) {
 
-            if (event.getKeyChar() == ' ')
+            if (event.getKeyChar() == ' ') {
                 isAnimated = !isAnimated;
+            }
         }
     }
 
@@ -73,9 +76,11 @@ public class AlgoVisualizer {
             // 点击frame包含了菜单栏的高度而不是panel真实的坐标，需要偏移这么一个高度
             event.translatePoint(-(int)(frame.getBounds().width - frame.getCanvasWidth()) / 2, -(int)(frame.getBounds().height - frame.getCanvasHeight()));
             System.out.println(event.getPoint());
-            for (Circle circle: circles)
-                if (circle.contain(event.getPoint()))
+            for (Circle circle : circles) {
+                if (circle.contain(event.getPoint())) {
                     circle.isFilled = !circle.isFilled;
+                }
+            }
         }
     }
 
