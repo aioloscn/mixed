@@ -17,6 +17,8 @@ public class BothRunnableThread extends Thread {
         }) {
             @Override
             public void run() {
+                // super.run()方法会调用（Runnable）target.run()方法，不写就只执行重写的run方法
+//                super.run();
                 System.out.println("Thread的run方法");
             }
         }.start();
