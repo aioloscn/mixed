@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * 两个线程打印日期
+ * 两个线程打印日期，没有出现共用一个工具类导致的结果不正确
  * @author Aiolos
  * @date 2020-01-02 13:28
  */

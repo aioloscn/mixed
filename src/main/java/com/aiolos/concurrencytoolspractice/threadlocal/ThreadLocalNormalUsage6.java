@@ -24,6 +24,12 @@ class Service2 {
     public void process() {
         User user = UserContextHolder.holder.get();
         System.out.println(user.name);
+        // 既然要重新set，remove()可有可无
+        UserContextHolder.holder.remove();
+        user = new User("aiolosxhx");
+        UserContextHolder.holder.set(user);
+        // 但是如果不再使用这个ThreadLocal了，应该主动调用remove防止内存泄露
+        UserContextHolder.holder.remove();
         new Service3().process();
     }
 }

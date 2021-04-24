@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * 30个线程打印日期，创建SimpleDateFormat-运行-销毁开销太大
+ * 30个线程打印日期，new了30次SimpleDateFormat-运行-销毁开销太大
  * @author Aiolos
  * @date 2020-01-02 13:28
  */

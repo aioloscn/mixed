@@ -6,7 +6,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * 1000个打印日期的任务，用线程池来执行，创建SimpleDateFormat-运行-销毁开销太大
+ * 1000个打印日期的任务，用线程池来执行，new了1000次SimpleDateFormat-运行-销毁开销太大
  * @author Aiolos
  * @date 2020-01-02 13:28
  */
