@@ -5,7 +5,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * 演示多线程预定电影院座位，和用什么锁没关系
  * @author Aiolos
- * @date 2021/4/25 3:09 下午
+ * @date 2021/4/25 3:08 下午
  */
 public class CinemaBookSeat {
 
