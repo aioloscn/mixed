@@ -4,6 +4,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
+ * 演示可中断锁
+ * 拿到锁的被中断是在休眠期间被打断，如果是等待锁的线程被中断则是在等待期间被打断
  * @author Aiolos
  * @date 2020-01-12 18:01
  */
@@ -18,6 +20,7 @@ public class LockInterruptibly implements Runnable {
         t1.start();
         t2.start();
         Thread.sleep(2000);
+//        t1.interrupt();
         t2.interrupt();
     }
 
