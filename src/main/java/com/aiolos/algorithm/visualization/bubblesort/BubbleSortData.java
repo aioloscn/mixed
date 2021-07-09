@@ -1,14 +1,13 @@
-package com.aiolos.algorithm.visualization.selectionsort;
+package com.aiolos.algorithm.visualization.bubblesort;
 
-public class SelectionSortData {
+public class BubbleSortData {
 
     private int[] numbers;
 
     public int orderedIndex = -1;           // [0...orderedIndex) 最新一个排好序的索引
-    public int currentMinIndex = -1;        // 当前找到的最小元素的索引
     public int currentCompareIndex = -1;    // 当前正在比较的元素的索引
 
-    public SelectionSortData(int N, int randomBound) {
+    public BubbleSortData(int N, int randomBound) {
 
         numbers = new int[N];
         for (int i = 0; i < N; i++)

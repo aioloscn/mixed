@@ -1,4 +1,4 @@
-package com.aiolos.algorithm.visualization.selectionsort;
+package com.aiolos.algorithm.visualization.bubblesort;
 
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -11,13 +11,13 @@ import java.awt.event.MouseAdapter;
  */
 public class AlgoVisualizer {
 
-    private static int DELAY = 5;
-    private SelectionSortData data;
+    private static int DELAY = 10;
+    private BubbleSortData data;
     private AlgoFrame frame;
 
     public AlgoVisualizer(int sceneWidth, int sceneHeight, int N) {
 
-        data = new SelectionSortData(N, sceneHeight);
+        data = new BubbleSortData(N, sceneHeight);
 
         // 初始化视图
         EventQueue.invokeLater(() -> {
@@ -34,30 +34,40 @@ public class AlgoVisualizer {
     // 动画逻辑
     private void run() {
 
-        setData(0, -1, -1);
+        setData(data.N(), -1);
 
-        for (int i = 0; i < data.N() - 1; i++) {
-
-            int minIndex = i;
-            setData(i, -1, minIndex);
-            for (int j = i + 1; j < data.N(); j++) {
-                setData(i, j, minIndex);
-                if (data.get(j) < data.get(minIndex)) {
-                    minIndex = j;
-                    setData(i, j, minIndex);
+        // 第一版
+        /*for (int i = 0; i < data.N() - 1; i++) {
+            for (int j = 0; j < data.N() - 1 - i; j++) {
+                setData(data.N() - i, j);
+                if (data.get(j) > data.get(j + 1)) {
+                    data.swap(j, j + 1);
                 }
             }
-            data.swap(i, minIndex);
-//            setData(i + 1, -1, -1);
-        }
+        }*/
 
-        setData(data.N(), -1, -1);
+        // 第二版
+        int n = data.N();
+        int newn;
+        do {
+            newn = 0;
+            for (int i = 1; i < n; i++) {
+                setData(n, i);
+                if (data.get(i - 1) > data.get(i)) {
+                    data.swap(i, i - 1);
+                    newn = i;
+                    setData(n, i);
+                }
+            }
+            n--;
+        } while (newn > 0);
+
+        setData(0, -1);
     }
 
-    private void setData(int orderedIndex, int currentMinIndex, int currentCompareIndex) {
+    private void setData(int orderedIndex, int currentCompareIndex) {
 
         data.orderedIndex = orderedIndex;
-        data.currentMinIndex = currentMinIndex;
         data.currentCompareIndex = currentCompareIndex;
 
         frame.render(data);

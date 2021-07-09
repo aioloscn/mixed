@@ -1,4 +1,4 @@
-package com.aiolos.algorithm.visualization.selectionsort;
+package com.aiolos.algorithm.visualization.bubblesort;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,9 +34,9 @@ public class AlgoFrame extends JFrame {
         return canvasHeight;
     }
 
-    private SelectionSortData data;
+    private BubbleSortData data;
 
-    public void render(SelectionSortData data) {
+    public void render(BubbleSortData data) {
         this.data = data;
         // 将JFrame中的控件重新刷新一遍, 清空AlgoCanvas后重新调用paintCompenent()
         repaint();
@@ -59,15 +59,13 @@ public class AlgoFrame extends JFrame {
             g2d.addRenderingHints(hints);
 
             int w = canvasWidth / data.N();
-            for (int i = 0; i < data.N(); i++) {
-                if (i < data.orderedIndex)
+            for (int i = data.N() - 1; i >= 0; i--) {
+                if (i >= data.orderedIndex)
                     AlgoVisHelper.setColor(g2d, Color.RED);
                 else
                     AlgoVisHelper.setColor(g2d, Color.LIGHT_GRAY);
 
                 if (i == data.currentCompareIndex)
-                    AlgoVisHelper.setColor(g2d, Color.GREEN);
-                if (i == data.currentMinIndex)
                     AlgoVisHelper.setColor(g2d, Color.BLUE);
 
                 AlgoVisHelper.fillRectangle(g2d, i * w, canvasHeight - data.get(i), w - 1, data.get(i));

@@ -11,7 +11,7 @@ import java.awt.event.MouseAdapter;
  */
 public class AlgoVisualizer {
 
-    private static int DELAY = 100;
+    private static int DELAY = 50;
     private InsertionSortData data;
     private AlgoFrame frame;
 
@@ -40,13 +40,23 @@ public class AlgoVisualizer {
 
         setData(0, -1);
 
-        for (int i = 0; i < data.N(); i++) {
+        for (int i = 1; i < data.N(); i++) {
 
             setData(i, i);
+            // 第一版
             for (int j = i; j > 0 && data.get(j) < data.get(j - 1); j--) {
                 data.swap(j, j - 1);
                 setData(i + 1, j - 1);
             }
+
+            // 第二版，算法效率更高，可视化效果偏差
+            /*int copy = data.get(i);
+            int j = i;
+            for (; j > 0 && copy < data.get(j - 1); j--) {
+                data.set(j, data.get(j - 1));
+                setData(i, j - 1);
+            }
+            data.set(j, copy);*/
         }
 
         setData(data.N(), -1);
@@ -70,6 +80,6 @@ public class AlgoVisualizer {
         int sceneWidth = 700;
         int sceneHeight = 700;
         int N = 100;
-        AlgoVisualizer visualizer = new AlgoVisualizer(sceneWidth, sceneHeight, N, InsertionSortData.Type.NearlyOrdered);
+        AlgoVisualizer visualizer = new AlgoVisualizer(sceneWidth, sceneHeight, N);
     }
 }

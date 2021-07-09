@@ -47,6 +47,12 @@ public class InsertionSortData {
         return numbers[index];
     }
 
+    public void set(int index, int e) {
+        if (index < 0 || index >= numbers.length)
+            throw new IllegalArgumentException("Invalid index to access Sort Data");
+        numbers[index] = e;
+    }
+
     public void swap(int i, int j) {
 
         if (i < 0 || i >= numbers.length || j < 0 || j >= numbers.length)

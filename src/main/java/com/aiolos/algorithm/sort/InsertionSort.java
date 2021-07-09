@@ -11,10 +11,15 @@ public class InsertionSort {
 
         // i从第二位开始，向前比较
         for (int i = 1; i < arr.length; i++) {
+            // 第一版
             /*for (int j = i; j > 0 && arr[j].compareTo(arr[j - 1]) < 0; j--) {
                 swap(arr, j, j - 1);
             }*/
+
+            // 第二版
+            // 寻找arr[i]合适的插入位置
             Comparable copy = arr[i];
+            // j保存元素应该copy应该插入的位置
             int j;
             for (j = i; j > 0 && copy.compareTo(arr[j - 1]) < 0; j--) {
                     arr[j] = arr[j - 1];
