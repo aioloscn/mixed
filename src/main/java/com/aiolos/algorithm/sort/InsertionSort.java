@@ -28,6 +28,12 @@ public class InsertionSort {
         }
     }
 
+    /**
+     * 对arr[l...r]区间使用InsertionSort排序
+     * @param arr
+     * @param l
+     * @param r
+     */
     public static void sort(Comparable[] arr, int l, int r) {
 
         for (int i = l + 1; i <= r; i++) {

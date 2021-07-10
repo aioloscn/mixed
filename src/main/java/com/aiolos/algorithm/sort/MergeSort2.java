@@ -3,49 +3,32 @@ package com.aiolos.algorithm.sort;
 import java.util.Arrays;
 
 /**
+ * 自底向上的归并排序算法
  * @author Aiolos
- * @date 2019-12-22 21:22
+ * @date 2021/7/10 6:23 下午
  */
-public class MergeSort {
-
-    private MergeSort() {}
+public class MergeSort2 {
 
     public static void sort(Comparable[] arr) {
 
-        sort(arr, 0, arr.length - 1);
-    }
-
-    private static void sort(Comparable[] arr, int l, int r) {
-
-        if (r - l <= 15) {
-            InsertionSort.sort(arr, l, r);
-            return;
+        for (int i = 0; i < arr.length; i+= 16) {
+            InsertionSort.sort(arr, i, Math.min(i + 15, arr.length - 1));
         }
 
-        int mid = (r - l) / 2 + l;
-        sort(arr, l, mid);
-        sort(arr, mid + 1, r);
-        // 对于有序的情况不需要归并，if语句的判断本身也要消耗一定的性能，但总体影响不大
-        if (arr[mid].compareTo(arr[mid + 1]) > 0)
-            merge(arr, l, mid, r);
+        for (int sz = 1; sz <= arr.length; sz += sz) {
+            for (int i = 0; i + sz < arr.length; i += sz + sz) {
+                // 对arr[i...i+sz-1]和arr[i+sz...i+2*sz-1]这2个有序的部分进行归并成一个有序的部分
+                // 防止i + sz + sz - 1越界，所以自底向上的归并排序不一定是平均划分的，层数差距最多差一层，但是不需要使用递归减少了这部分性能开销
+                if (arr[i + sz - 1].compareTo(arr[i + sz]) > 0)
+                    merge(arr, i, i + sz - 1, Math.min(i + sz + sz - 1, arr.length - 1));
+            }
+        }
     }
 
-    /**
-     * 将arr[l...mid]和arr[mid+1...r]两部分进行归并
-     * @param arr
-     * @param l
-     * @param mid
-     * @param r
-     */
     private static void merge(Comparable[] arr, int l, int mid, int r) {
-
         Comparable[] aux = Arrays.copyOfRange(arr, l, r + 1);
-
-        // 初始化，i指向左半部分的起始位置l，j指向右半部分的起始位置mid+1
         int i = l, j = mid + 1;
         for (int k = l; k <= r; k++) {
-
-            // 如果左半边部分值偏小导致左半边部分已经全部处理完
             if (i > mid) {
                 arr[k] = aux[j - l];
                 j++;
