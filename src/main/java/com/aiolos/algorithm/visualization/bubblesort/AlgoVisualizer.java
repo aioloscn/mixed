@@ -5,7 +5,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.MouseAdapter;
 
 /**
- * 选择排序O(n*n) 是交换最少的排序，只需要交换n次，如果交换这个操作非常耗时的话，选择排序就成了最优的选择
+ * 冒泡排序，与相邻的数比较找到最大或最小的值，O(n²)
  * @author aiolos
  * 2018-12-21
  */
