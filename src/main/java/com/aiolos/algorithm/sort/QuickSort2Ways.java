@@ -54,6 +54,7 @@ public class QuickSort2Ways {
             i++;
             j--;
         }
+        // 当整个循环结束的时候，i停在了第一个>=v的位置，j停在了最后一个<=v的位置，所以交换j而不是i
         swap(arr, l, j);
         return j;
     }

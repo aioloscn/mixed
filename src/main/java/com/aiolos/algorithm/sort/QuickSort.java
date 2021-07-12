@@ -34,16 +34,24 @@ public class QuickSort {
      * @param arr
      * @param l
      * @param r
-     * @return  返回p，使得arr[l...p-1] < arr[p] && arr[p] > [p+1...r]
+     * @return  返回j，使得arr[l...j-1] < arr[j] && arr[j] > [j+1...r]
      */
     private static int partition(Comparable[] arr, int l, int r) {
 
         swap(arr, l, (int) (Math.random() * (r - l + 1)) + l);
+        // 取考察数组的第一个元素作为v
         Comparable v = arr[l];
+        // 初始时j = l，所以arr[l + 1...j]和arr[j + 1...i)都是空，i表示当前要考察的元素所以是开区间
         int j = l;
         for (int i = l + 1; i <= r; i++) {
 
             if (arr[i].compareTo(v) < 0) {
+                // | v | < v | > v | e |
+                //   l      j        i
+                // swap
+                // | v | < v | e | > v |
+                //   l         j         i
+                // 将当前考察位置的元素和arr[j]位置的元素交换位置并j++，满足arr[l + 1...j] < v
                 swap(arr, ++j, i);
             }
         }
