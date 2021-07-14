@@ -8,10 +8,10 @@ import java.util.Arrays;
  */
 public class Main {
     public static void main(String[] args) {
-        int n = 10000;
-        Integer[] arr1 = SortHelper.generateRandomArray(n, 100, 100000);
+        int n = 10000000;
+        Integer[] arr1 = SortHelper.generateRandomArray(n, 100, 100000000);
         Integer[] arr2 = Arrays.copyOf(arr1, arr1.length);
-        SortHelper.testSort("com.aiolos.algorithm.sort.SelectionSort", arr1);
-        SortHelper.testSort("com.aiolos.algorithm.sort.InsertionSort", arr2);
+        SortHelper.testSort("com.aiolos.algorithm.sort.MergeSort", arr1);
+        SortHelper.testSort("com.aiolos.algorithm.sort.QuickSort", arr2);
     }
 }
