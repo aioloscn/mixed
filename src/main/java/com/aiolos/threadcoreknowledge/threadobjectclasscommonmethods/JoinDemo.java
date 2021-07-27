@@ -5,13 +5,27 @@ package com.aiolos.threadcoreknowledge.threadobjectclasscommonmethods;
  * @author Aiolos
  * @date 2019-08-30 16:41
  */
-public class JoinDemo implements Runnable {
+public class JoinDemo {
 
     public static void main(String[] args) throws InterruptedException {
 
         JoinDemo joinDemo = new JoinDemo();
-        Thread thread1 = new Thread(joinDemo);
-        Thread thread2 = new Thread(joinDemo);
+        Thread thread1 = new Thread(() -> {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(Thread.currentThread().getName() + "执行完毕");
+        });
+        Thread thread2 = new Thread(() -> {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(Thread.currentThread().getName() + "执行完毕");
+        });
 
         thread1.start();
         thread2.start();
@@ -19,15 +33,5 @@ public class JoinDemo implements Runnable {
         thread1.join();
         thread2.join();
         System.out.println("所有子线程执行完毕");
-    }
-
-    @Override
-    public void run() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println(Thread.currentThread().getName() + "执行完毕");
     }
 }
