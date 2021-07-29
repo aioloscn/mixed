@@ -20,7 +20,7 @@ public class JoinDemo {
         });
         Thread thread2 = new Thread(() -> {
             try {
-                Thread.sleep(5000);
+                Thread.sleep(10000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -31,6 +31,7 @@ public class JoinDemo {
         thread2.start();
         System.out.println("开始等待子线程运行完毕");
         thread1.join();
+        System.out.println("thread1执行完毕唤醒主线程，此时才执行thread2.join()，主线程继续阻塞");
         thread2.join();
         System.out.println("所有子线程执行完毕");
     }
