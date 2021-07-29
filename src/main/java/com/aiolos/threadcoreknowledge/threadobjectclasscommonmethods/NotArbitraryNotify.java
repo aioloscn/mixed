@@ -49,6 +49,11 @@ public class NotArbitraryNotify {
             TimeUnit.MILLISECONDS.sleep(1);
         }
 
+        // notify是FIFO的，notifyAll是LIFO的
+        /*synchronized (lock) {
+            lock.notifyAll();
+        }*/
+
         TimeUnit.MILLISECONDS.sleep(100);
         System.out.println("wait的顺序：" + waitList.toString());
         System.out.println("notify的顺序：" + notifyList.toString());
