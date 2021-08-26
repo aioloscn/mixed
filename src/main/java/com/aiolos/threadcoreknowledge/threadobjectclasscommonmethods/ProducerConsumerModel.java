@@ -13,6 +13,7 @@ public class ProducerConsumerModel {
 
     public static void main(String[] args) {
 
+        // storage中的wait()、notify()用的对象锁this指storage这个实例，对象可能被多次实例化，必须是同一个实例才是共用同一把锁
         EventStorage storage = new EventStorage();
         Producer producer = new Producer(storage);
         Consumer consumer = new Consumer(storage);
